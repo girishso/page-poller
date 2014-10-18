@@ -442,7 +442,10 @@ section.featured h2.slogan {
 	font-size: 48px;
 	font-weight: 900;
 }
-  
+section.featured h3 {
+	color: #fff;
+}
+
  /* inner heading */
 section.featured.inner {
 	background: #eee;

@@ -76,3 +76,52 @@ a:hover {
 a.scrollup{
 	background:#59B2E5;
 }
+
+section.featured #btns button:first-child {
+margin-right: 30px;
+}
+
+section.featured #btns button {
+margin: 0 auto 30px;
+}
+button, .btn-nesto-home, .btn.btn-nesto-home, .panel-title a, .panel-title a.collapsed:hover, .feature-box-style1:hover .feature-box-title, .feature-box-style2:hover .feature-box-title, .member-title, #newsletter-form button, #owl-clients-wrapper .client-name, .contactform #form-message {
+color: #2F5F7A;
+}
+
+.btn-nesto-home, .btn.btn-nesto-home {
+z-index: 1;
+color: #2F5F7A;
+font-size: 20px;
+overflow: hidden;
+font-weight: 400;
+padding: 15px 22px;
+position: relative;
+letter-spacing: 1px;
+background-color: #ffffff;
+-webkit-border: 0;
+-moz-border: 0;
+-o-border: 0;
+border: 0;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+border-radius: 6px;
+-webkit-transition: all 0.1s ease-in;
+-moz-transition: all 0.1s ease-in;
+-ms-transition: all 0.1s ease-in;
+-o-transition: all 0.1s ease-in;
+transition: all 0.1s ease-in;
+-webkit-box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+-moz-box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+-o-box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+}
+
+.btn-nesto-home:hover {
+	background-color: #2F5F7A;
+	color: #fff;
+}
+
+#btns {
+	padding-top: 20px;
+}
