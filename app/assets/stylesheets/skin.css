@@ -1,78 +1,78 @@
 /*
 #1 = 35A49C
-#2 = 79CDC0
+#2 = 7ad0ff
 */
 a {
-	color: #35A49C;
+	color: #59B2E5;
 }
 a:hover {
-	color: #79CDC0;
+	color: #7ad0ff;
 }
 
 /* menu */
 .nav>li>a:hover {
-	color: #79CDC0;
+	color: #7ad0ff;
 }
 
 .navbar .navbar-nav > .active > a {
-	color: #79CDC0;
+	color: #7ad0ff;
 }
 
 /* flexslider */
 .flex-control-paging li a {
-	background: #35A49C;
+	background: #59B2E5;
 }
 
 .flex-direction-nav a:hover{
-	background-color:#35A49C;
+	background-color:#59B2E5;
 }
 
 .testimonial span.author a {
-	color: #79CDC0;
+	color: #7ad0ff;
 }
 
 /* --- icon box hover --- */
 .hi-icon-effect-5 .hi-icon {
-	color: #35A49C;
-	box-shadow: 0 0 0 4px #35A49C;
+	color: #59B2E5;
+	box-shadow: 0 0 0 4px #59B2E5;
 }
 .no-touch .hi-icon-effect-5 .hi-icon:hover {
-	background: #35A49C;
-	box-shadow: 0 0 0 8px  #79CDC0;
+	background: #59B2E5;
+	box-shadow: 0 0 0 8px  #7ad0ff;
 }
 
 
 /* portfolio */
 .portfolio-item .portfolio-desc {
-	background: #35A49C;
+	background: #59B2E5;
 }
 
 /* btn */
 .btn-theme {
-  background: #79CDC0;
+  background: #7ad0ff;
 }
 .btn-theme:hover,.btn-theme:focus,.btn-theme:active{
-  background: #35A49C;
+  background: #59B2E5;
 }
 .btn-cta,.btn-cta.btn-lg {
-  background: #35A49C;
-  border-color: #79CDC0;
+  background: #59B2E5;
+  border-color: #7ad0ff;
 }
 
 .btn-cta:focus,.btn-cta:active{
-   border-color: #35A49C;
+   border-color: #59B2E5;
 }
 
 /* contact */
 .validation {
-	color:#35A49C;
+	color:#59B2E5;
 }
 
 /* footer */
 .social-circle li a {
-	background:#35A49C;
+	background:#59B2E5;
 }
 
 a.scrollup{
-	background:#35A49C;
+	background:#59B2E5;
 }
