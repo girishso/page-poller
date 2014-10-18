@@ -10,7 +10,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require modernizr-2.6.2-respond-1.1.0.min
 //= require jquery
-//= require jquery_ujs
-//= require vendor_js
-//= require turbolinks
+//= require jquery.easing.1.3
+//= require bootstrap.min
+//= require jquery.isotope.min
+//= require jquery.nicescroll.min
+//= require fancybox/jquery.fancybox.pack
+//= require skrollr.min	
+//= require jquery.scrollTo-1.4.3.1-min
+//= require jquery.localscroll-1.2.7-min
+//= require stellar
+//= require jquery.appear
+//= require validate
+//= require main

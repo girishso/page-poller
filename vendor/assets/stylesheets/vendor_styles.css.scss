@@ -10,6 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require vendor_styles
- *= require skin
- */
+ *= require isotope.css
+ *= require fancybox/jquery.fancybox.css
+ *= require bootstrap.css
+ *= require bootstrap-theme.css
+ *= require style.css
+*/
