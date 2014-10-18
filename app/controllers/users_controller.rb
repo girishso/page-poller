@@ -3,6 +3,20 @@ class UsersController < ApplicationController
   before_filter :correct_user?, :except => [:index]
   before_action :set_user, only: [:show, :edit, :update]
 
+  def create
+    if params['guest_login'] == 'true'
+      @user = User.create_guest_user 
+    end
+    if @user.valid?
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_url
+      else
+        render "new"
+      end
+    end
+  end
+
   def index
     @users = User.all
   end
@@ -36,4 +50,5 @@ class UsersController < ApplicationController
     def users_params
       params.require(:user).permit(:name, :email, :user_id, :phone)
     end
+
 end

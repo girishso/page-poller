@@ -11,4 +11,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.create_guest_user
+    guest_id = "#{Time.now.to_i}#{rand(9)}"
+    usr = User.new(name: "guest#{guest_id}",
+                 email: "guest_#{guest_id}@example.com",
+                )
+    usr.guest = true
+    usr.save!(validate: false)
+    # session[:guest_user_id] = usr.id
+    usr
+  end
+
 end
