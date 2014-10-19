@@ -1,9 +1,10 @@
 class ScrapersController < ApplicationController
   respond_to :html
+  before_filter :authenticate_user!
   before_action :set_scraper, only: [:show, :edit, :update, :destroy]
 
   def index
-    @scrapers = Scraper.all
+    @scrapers = current_user.scrapers
     respond_with(@scrapers)
   end
 
@@ -21,6 +22,7 @@ class ScrapersController < ApplicationController
 
   def create
     @scraper = Scraper.new(scraper_params)
+    @scraper.user_id = current_user.id
     @scraper.save
     respond_with(@scraper)
   end

@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /notifications
   # GET /notifications.json
