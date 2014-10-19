@@ -43,6 +43,7 @@
               %li
                 = link_to "Sign out", signout_path 
         / /.navbar-collapse
+    =render 'layouts/messages'
     -if controller.controller_name == "visitors"
       - if current_user.nil?
         %section.featured

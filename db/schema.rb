@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019172031) do
+ActiveRecord::Schema.define(version: 20141019202926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "logs", force: true do |t|
-    t.string   "message"
+    t.text     "message"
     t.integer  "scraper_id"
     t.string   "extra"
     t.datetime "created_at"

@@ -10,6 +10,10 @@
   - @output.each_pair do |k, v|
     %tr
       %td= k
-      %td= v
+      %td
+        -if k == 'src'
+          %img(src="#{v.first}")
+          %hr
+        = v
 
 %hr
