@@ -1,0 +1,11 @@
+= simple_form_for(@notification) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :output
+    = f.association :scraper
+    = f.input :notification_type
+    = f.input :sent
+
+  .form-actions
+    = f.button :submit

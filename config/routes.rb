@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :logs
+
+  resources :notifications
+
   resources :scrapers
 
   resources :users

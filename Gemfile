@@ -17,6 +17,7 @@ gem 'pg'
 gem 'sendgrid'
 gem 'simple_form'
 gem 'sendgrid-ruby'
+gem 'chronic'
 
 group :development do
   gem 'better_errors'

@@ -1,0 +1,10 @@
+= simple_form_for(@log) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :message
+    = f.association :scraper
+    = f.input :extra
+
+  .form-actions
+    = f.button :submit

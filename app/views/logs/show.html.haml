@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Message:
+  = @log.message
+%p
+  %b Scraper:
+  = @log.scraper
+%p
+  %b Extra:
+  = @log.extra
+
+= link_to 'Edit', edit_log_path(@log)
+\|
+= link_to 'Back', logs_path
