@@ -21,6 +21,7 @@ gem 'chronic'
 gem 'twilio-ruby'
 gem 'faraday', '~> 0.9.0'
 gem 'faraday_middleware'
+gem 'nokogiri'
 
 group :development do
   gem 'better_errors'
@@ -42,6 +43,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'thin'
 end

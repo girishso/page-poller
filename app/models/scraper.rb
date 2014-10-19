@@ -31,43 +31,58 @@ class Scraper < ActiveRecord::Base
     raise "Failed: #{response.inspect}" unless response.success?
     body = response.body
     doc = Nokogiri::HTML(body)
-
+    output = extract_xml(doc)
   end
 
   private
     def extract_xml(doc)
-      extract_each(doc) { |extraction_details|
-        case
-        when css = extraction_details['css']
-          nodes = doc.css(css)
-        when xpath = extraction_details['xpath']
-          doc.remove_namespaces! # ignore xmlns, useful when parsing atom feeds
-          nodes = doc.xpath(xpath)
-        else
-          raise '"css" or "xpath" is required for HTML or XML extraction'
-        end
-        case nodes
-        when Nokogiri::XML::NodeSet
-          result = nodes.map { |node|
-            case value = node.xpath(extraction_details['value'])
-            when Float
-              # Node#xpath() returns any numeric value as float;
-              # convert it to integer as appropriate.
-              value = value.to_i if value.to_i == value
-            end
-            value.to_s
-          }
-        else
-          raise "The result of HTML/XML extraction was not a NodeSet"
-        end
-        log "Extracting #{extraction_type} at #{xpath || css}: #{result}"
+      extract_each(doc) { |name|
+        binding.pry
+        nodes = doc.css(target_element)
+
+        result = nodes.map { |node|
+          xpath = name == "text" ? "text()" : "@#{name}"
+          case value = node.xpath(xpath)
+          when Float
+            # Node#xpath() returns any numeric value as float;
+            # convert it to integer as appropriate.
+            value = value.to_i if value.to_i == value
+          end
+          value.to_s
+        }
+        log "Extracting #{name}: #{result}"
+        
+        # case
+        # when css = extraction_details['css']
+        #   nodes = doc.css(css)
+        # when xpath = extraction_details['xpath']
+        #   doc.remove_namespaces! # ignore xmlns, useful when parsing atom feeds
+        #   nodes = doc.xpath(xpath)
+        # else
+        #   raise '"css" or "xpath" is required for HTML or XML extraction'
+        # end
+
+        # case nodes
+        # when Nokogiri::XML::NodeSet
+        #   result = nodes.map { |node|
+        #     case value = node.xpath(extraction_details['value'])
+        #     when Float
+        #       # Node#xpath() returns any numeric value as float;
+        #       # convert it to integer as appropriate.
+        #       value = value.to_i if value.to_i == value
+        #     end
+        #     value.to_s
+        #   }
+        # else
+        #   raise "The result of HTML/XML extraction was not a NodeSet"
+        # end
         result
       }
     end
 
     def extract_each(doc, &block)
-      interpolated['extract'].each_with_object({}) { |(name, extraction_details), output|
-        output[name] = block.call(extraction_details)
+      extract.each_with_object({}) { |(name), output|
+        output[name] = block.call(name)
       }
     end
 
