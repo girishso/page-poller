@@ -5,9 +5,7 @@
     %h3
       Page poller scrapes a web page and notifies the user when the page is changed.
     #btns
-      %button.btn.btn-nesto-home
-        %i.fa.fa-user
-        Register
-      %button.btn.btn-danger.btn-nesto-home
-        %i.fa.fa-paper-plane
-        Guest user
+      
+      =button_to "Login with Github", signin_path , :method => :get, :style => 'font-size:50px; line-height:60px' , :class => 'btn btn-nesto-home btn-large'
+      %i.fa.fa-github
+      

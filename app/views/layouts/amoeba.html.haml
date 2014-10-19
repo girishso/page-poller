@@ -23,12 +23,12 @@
           %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
             %span.fa.fa-bars.color-white
           %h1
-            %a.navbar-brand{"data-0" => "line-height:90px;", "data-300" => "line-height:50px;", :href => "index.html"}
+            %a.navbar-brand{"data-0" => "line-height:90px;", "data-300" => "line-height:50px;", :href => "/"}
               Page Poller
         .navbar-collapse.collapse
           %ul.nav.navbar-nav{"data-0" => "margin-top:20px;", "data-300" => "margin-top:5px;"}
             %li.active
-              %a{:href => "index.html"} Home
+              %a{:href => "/"} Home
             %li
               = link_to "Scrapers", scrapers_path
             %li
@@ -46,39 +46,6 @@
           .row.mar-bot40
             = yield
   
-    / contact
-    %section#section-contact.section.appear.clearfix
-      .container
-        .row.mar-bot40
-          .col-md-offset-3.col-md-6
-            .section-header
-              %h2.section-heading.animated{"data-animation" => "bounceInUp"} Contact us
-              %p Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit, sed quia non numquam.
-        .row
-          .col-md-8.col-md-offset-2
-            #contact-form.cform
-              #sendmessage
-                Your message has been sent. Thank you!
-              %form.contactForm{:action => "contact/contact.php", :method => "post", :role => "form"}
-                .form-group
-                  %label{:for => "name"} Your Name
-                  %input#name.form-control{"data-msg" => "Please enter at least 4 chars", "data-rule" => "maxlen:4", :name => "name", :placeholder => "Your Name", :type => "text"}/
-                  .validation
-                .form-group
-                  %label{:for => "email"} Your Email
-                  %input#email.form-control{"data-msg" => "Please enter a valid email", "data-rule" => "email", :name => "email", :placeholder => "Your Email", :type => "email"}/
-                  .validation
-                .form-group
-                  %label{:for => "subject"} Subject
-                  %input#subject.form-control{"data-msg" => "Please enter at least 8 chars of subject", "data-rule" => "maxlen:4", :name => "subject", :placeholder => "Subject", :type => "text"}/
-                  .validation
-                .form-group
-                  %label{:for => "message"} Message
-                  %textarea.form-control{"data-msg" => "Please write something for us", "data-rule" => "required", :name => "message", :rows => "5"}
-                  .validation
-                %button.btn.btn-theme.pull-left{:type => "submit"} SEND MESSAGE
-          / ./span12
-    / map
     %section#section-map.clearfix
       #map
     %section#footer.section.footer
