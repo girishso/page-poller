@@ -16,6 +16,7 @@ gem 'omniauth-github'
 gem 'pg'
 gem 'sendgrid'
 gem 'simple_form'
+gem 'sendgrid-ruby'
 
 group :development do
   gem 'better_errors'
