@@ -1,23 +1,15 @@
-%h1 Listing logs
+%h1 Logs
 
-%table
+%table.table.table-striped
   %tr
     %th Message
     %th Scraper
-    %th Extra
-    %th
-    %th
-    %th
+    %th Time
 
   - @logs.each do |log|
     %tr
       %td= log.message
-      %td= log.scraper
-      %td= log.extra
-      %td= link_to 'Show', log
-      %td= link_to 'Edit', edit_log_path(log)
-      %td= link_to 'Destroy', log, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %td= link_to log.scraper.name, log.scraper
+      %td= distance_of_time_in_words_to_now(log.created_at)
+      
 %br
-
-= link_to 'New Log', new_log_path

@@ -1,25 +1,14 @@
-%h1 Listing notifications
+%h1  Notifications
 
-%table
+%table.table.table-striped
   %tr
     %th Output
     %th Scraper
-    %th Notification type
-    %th Sent
-    %th
-    %th
-    %th
+    %th Time
 
   - @notifications.each do |notification|
     %tr
       %td= notification.output
-      %td= notification.scraper
-      %td= notification.notification_type
-      %td= notification.sent
-      %td= link_to 'Show', notification
-      %td= link_to 'Edit', edit_notification_path(notification)
-      %td= link_to 'Destroy', notification, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %td= link_to notification.scraper.name, notification.scraper
+      %td= distance_of_time_in_words_to_now(notification.created_at)
 %br
-
-= link_to 'New Notification', new_notification_path
