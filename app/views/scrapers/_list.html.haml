@@ -1,4 +1,4 @@
-%h1 Scrappers
+%h1 Scrapers
 
 %table.table.table-striped
   %tr
@@ -25,4 +25,4 @@
         %td= scraper.extract
         %td= scraper.user.name
         %td= link_to 'Logs', logs_path
-        %td= link_to 'Notifications', notifications_path
+        %td= link_to 'Notifications', notifications_path( :params => {:scraper_id => scraper.id})

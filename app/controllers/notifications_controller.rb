@@ -5,7 +5,12 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
-    @notifications = Notification.all
+    if params[:scraper_id].present?
+      scraper = Scraper.find(params[:scraper_id])
+      @notifications = scraper.notifications
+    else  
+      @notifications = current_user.notifications
+    end
   end
 
   # GET /notifications/1
