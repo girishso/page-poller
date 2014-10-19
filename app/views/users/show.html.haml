@@ -18,3 +18,8 @@
               Phone:
               .span.text-success
                 = @user.phone if @user.phone
+  .container
+    .row
+      .col-md-6.col-md-offset-3.text-left      
+        .span.strong        
+          = link_to "Edit", edit_user_path(@user)
