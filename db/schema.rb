@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019124907) do
+ActiveRecord::Schema.define(version: 20141019154325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141019124907) do
   add_index "logs", ["scraper_id"], name: "index_logs_on_scraper_id", using: :btree
 
   create_table "notifications", force: true do |t|
-    t.string   "output"
+    t.text     "output"
     t.integer  "scraper_id"
     t.string   "notification_type"
     t.boolean  "sent"

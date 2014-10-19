@@ -32,12 +32,24 @@ class Scraper < ActiveRecord::Base
     body = response.body
     doc = Nokogiri::HTML(body)
     output = extract_xml(doc)
+
+    log output.to_json
+    notify_if_changed(output)
   end
 
   private
+    def notify_if_changed(output)
+      last = notifications.order('id desc').first
+      binding.pry
+
+      if last.present?
+        return if last.output.downcase.gsub(/\s/, "") == output.to_json.downcase.gsub(/\s/, "")
+      end
+      notifications.create(output: output.to_json)
+    end
+
     def extract_xml(doc)
       extract_each(doc) { |name|
-        binding.pry
         nodes = doc.css(target_element)
 
         result = nodes.map { |node|
