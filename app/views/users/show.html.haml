@@ -1,0 +1,20 @@
+%section
+  .container
+    .row
+      .col-md-6.col-md-offset-3.text-center
+        %hgroup
+          %h2
+            User
+          .well.text-left
+            %p 
+              Name:
+              .span.text-info
+                = @user.name if @user.name
+            %p 
+              Email:
+              .span.text-primary
+                = @user.email if @user.email
+            %p
+              Phone:
+              .span.text-success
+                = @user.phone if @user.phone
