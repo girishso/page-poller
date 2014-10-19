@@ -1,15 +1,27 @@
 .col-md-6.col-md-offset-3
   -if current_user.nil?
     .align-center
-      %i.fa.fa-code.fa-5x.mar-bot20
-      %h2.slogan Page poller
+
+      %h2.slogan Page Poller
       %h3
         Watch web pages for changes and get notified when it changes.
         #btns
           %a.btn.btn-nesto-home{href: signin_path}
             %i.fa.fa-github
             Login with Github
+      %p
+        %h3 Use it to get notified...
+        %ul
+          %li When a university course has seats available because of drop outs
+          %li
+            When price of
+            %em *that smart phone*
+            drops 
+          %li When a new version of a RubyGem is released
+          %li When new xkcd comic hits the web!
+
+        Possibilities are endless!
   -else
-    =render  "scrapers/list" if @scrapers.present?
+    = render "scrapers/list" if @scrapers.present?
     = "You don't have any Scrapers yet! You want to create new? " if @scrapers.empty?
     = link_to "New Scraper", new_scraper_path

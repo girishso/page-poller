@@ -87,6 +87,13 @@ margin: 0 auto 30px;
 .btn-nesto-home, .btn.btn-nesto-home, .panel-title a, .panel-title a.collapsed:hover, .feature-box-style1:hover .feature-box-title, .feature-box-style2:hover .feature-box-title, .member-title, #newsletter-form button, #owl-clients-wrapper .client-name, .contactform #form-message {
 color: #2F5F7A;
 }
+section.featured li {
+	color: #fff;
+	text-align: left;
+	font-size: 18px;
+	/* line-height: 1.5em; */
+}
+
 
 .btn-nesto-home, .btn.btn-nesto-home {
 z-index: 1;
