@@ -154,3 +154,8 @@ color: #B4B4B4;
 section#footer .copyright a {
 color: #7ad0ff;
 }
+
+.sectionflash {
+	margin: 0;
+padding: 80px 0 0px 0;
+}
