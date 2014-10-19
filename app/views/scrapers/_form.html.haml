@@ -5,10 +5,8 @@
     = f.input :name
     = f.input :url
     = f.input :schedule
-    = f.input :last_check
-    = f.input :last_notification
-    = f.input :extract
-    = f.association :user
+    = f.input :extract, as: :text
+    =# f.association :user
 
   .form-actions
     = f.button :submit
