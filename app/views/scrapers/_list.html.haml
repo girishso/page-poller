@@ -1,0 +1,31 @@
+%h1 Scrappers
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Url
+    %th Schedule
+    %th Last check
+    %th Last notification
+    %th Extract
+    %th User
+    %th Logs
+    %th Notifications
+    %th
+    %th
+    %th
+  -if @scrapers.present?
+    - @scrapers.each do |scraper|
+      %tr
+        %td= scraper.name
+        %td= scraper.url
+        %td= scraper.schedule.humanize.titleize
+        %td= scraper.last_check
+        %td= scraper.last_notification
+        %td= scraper.extract
+        %td= scraper.user.name
+        %td= link_to 'Logs', logs_path
+        %td= link_to 'Notifications', notifications_path
+        %td= link_to 'Show', scraper
+        %td= link_to 'Edit', edit_scraper_path(scraper)
+        %td= link_to 'Destroy', scraper, :method => :delete, :data => { :confirm => 'Are you sure?' }
