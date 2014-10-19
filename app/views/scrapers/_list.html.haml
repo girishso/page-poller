@@ -10,8 +10,6 @@
     %th Schedule
     %th Last check
     %th Last notification
-    %th Extract
-    %th User
     %th Logs
     %th Notifications
     %th
@@ -23,9 +21,7 @@
         %td= link_to scraper.name, scraper
         %td= scraper.url
         %td= scraper.schedule.humanize.titleize
-        %td= scraper.last_check.present? ? distance_of_time_in_words_to_now(scraper.last_check) : "Never"
-        %td= scraper.last_notification.present? ? distance_of_time_in_words_to_now(scraper.last_notification) : "Never"
-        %td= scraper.extract
-        %td= scraper.user.name
+        %td= scraper.last_check.present? ? distance_of_time_in_words_to_now(scraper.last_check) + " ago" : "Never"
+        %td= scraper.last_notification.present? ? distance_of_time_in_words_to_now(scraper.last_notification) + " ago" : "Never"
         %td= link_to 'Logs', logs_path( :params => {:scraper_id => scraper.id})
         %td= link_to 'Notifications', notifications_path( :params => {:scraper_id => scraper.id})

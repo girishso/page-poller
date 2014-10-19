@@ -1,15 +1,16 @@
 %h1 Logs
-
+%h6.lead.small.text-primary
+  = " for " + @logs.first.scraper.name if params[:scraper_id].present? and @logs.present?
 %table.table.table-striped
   %tr
-    %th Message
     %th Scraper
+    %th Message
     %th Time
 
   - @logs.each do |log|
     %tr
-      %td= log.message
       %td= link_to log.scraper.name, log.scraper
-      %td= distance_of_time_in_words_to_now(log.created_at)
+      %td= log.message
+      %td= distance_of_time_in_words_to_now(log.created_at)  + " ago"
       
 %br

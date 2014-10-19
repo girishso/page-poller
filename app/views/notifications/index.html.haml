@@ -1,14 +1,15 @@
 %h1  Notifications
-
+%h6.lead.small.text-primary
+  = " for " + @notifications.first.scraper.name if params[:scraper_id].present? and @notifications.present?
 %table.table.table-striped
   %tr
-    %th Output
     %th Scraper
+    %th Output
     %th Time
 
   - @notifications.each do |notification|
     %tr
-      %td= notification.output
       %td= link_to notification.scraper.name, notification.scraper
-      %td= distance_of_time_in_words_to_now(notification.created_at)
+      %td= notification.output
+      %td= distance_of_time_in_words_to_now(notification.created_at) + " ago"
 %br
