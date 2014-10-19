@@ -12,8 +12,8 @@ class Scraper < ActiveRecord::Base
 
   end
 
-  def set_next_run_time(schedule)
-    case schedule
+  def set_next_run_time
+    self.next_run_time = case schedule
     when /never/
       puts "never"
       nil
@@ -29,7 +29,7 @@ class Scraper < ActiveRecord::Base
       end
     when /midnight/
       puts "00:00"
-      Time.now.midnight
+      Chronic.parse("today midnight")
     when /noon/
       puts "12:00"
       if Time.now.noon < Time.now # already past noon
@@ -42,6 +42,7 @@ class Scraper < ActiveRecord::Base
       today = Chronic.parse("today at " + schedule)
       (today <= Time.now) ? Chronic.parse("tomorrow at " + schedule) : today
     end
+
   end
 
 
