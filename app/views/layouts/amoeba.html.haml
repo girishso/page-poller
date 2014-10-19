@@ -69,10 +69,18 @@
         .row.align-center.copyright
           .col-sm-12
             %p.lead
-              Copyright &copy; 2014 
-              %a{:href => "http://cuberoot.in"} Cuberoot Software,
-              Theme  - by
+              Brought to you by:
+              %a{:href => "http://cuberoot.in"} Cube Root Software
+              , Theme  - by
               %a{:href => "http://bootstraptaste.com"} Bootstraptaste
+    #rumble2014{:style => "position: fixed; display: block; width: 100%; z-index: 99999; bottom: 0px; left: 0px; padding: 10px 0px; text-align: center; margin: 0px; color: rgb(176, 176, 176); background-color: rgb(22, 22, 22);"}
+      %span
+        You can
+        %a{:href => "http://railsrumble.com/?view=http://immense-bayou-8081.herokuapp.com/", :style => "color: rgb(255, 255, 255); font-weight: bolder; text-decoration: none;"} vote for us
+        in the
+        = succeed "!" do
+          %a{:href => "http://railsrumble.com", :style => "color: rgb(255, 255, 255); font-weight: bolder; text-decoration: none;"} 2014 Rails Rumble
+      %span#rumbleCloseButton{:style => "position: absolute; right: 8px; cursor: pointer; top: 8px;"} x
 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %script{:charset => "utf-8", :type => "text/javascript"}

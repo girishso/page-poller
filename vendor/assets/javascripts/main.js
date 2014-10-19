@@ -15,8 +15,11 @@
 	// local scroll
 	//jQuery('.navbar').localScroll({hash:true, offset: {top: 0},duration: 800, easing:'easeInOutExpo'});
 
-
-	// portfolio
+  $("#rumbleCloseButton").click(function(){
+    $("#rumble2014").hide();
+  });
+  
+	 // portfolio
     if($('.isotopeWrapper').length){
 
         var $container = $('.isotopeWrapper');
