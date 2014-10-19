@@ -4,8 +4,14 @@
     %h2.slogan Page poller
     %h3
       Page poller scrapes a web page and notifies the user when the page is changed.
-    #btns
-      %a.btn.btn-nesto-home{href: signin_path}
-        %i.fa.fa-github
-        Login with Github
+    -if current_user.nil?
+      #btns
+        %a.btn.btn-nesto-home{href: signin_path}
+          %i.fa.fa-github
+          Login with Github
+    -else
+      #btns
+        %a.btn.btn-nesto-home{href: scrapers_path}
+          %i.fa.fa-code.2x
+          Scraper It
       

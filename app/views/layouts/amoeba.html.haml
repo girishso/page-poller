@@ -33,6 +33,9 @@
               = link_to "Scrapers", scrapers_path
             %li
               %a{:href => "#section-about"} About
+            -if current_user.present?
+              %li
+                = link_to "Sign out", signout_path 
         / /.navbar-collapse
     -if controller.controller_name == "visitors"
       %section.featured
