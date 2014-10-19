@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019202926) do
+ActiveRecord::Schema.define(version: 20141059154325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20141019202926) do
     t.string   "schedule"
     t.datetime "last_check"
     t.datetime "last_notification"
-    t.json     "extract"
+    t.text     "extract"
     t.integer  "user_id"
     t.integer  "expected_update_period"
     t.datetime "created_at"
