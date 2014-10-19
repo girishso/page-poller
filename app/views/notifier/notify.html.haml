@@ -1,0 +1,15 @@
+%h3 #{@notification.scraper.name} scraper
+
+%hr
+
+%table
+  %tr
+    %th field name
+    %th field value
+
+  - @output.each_pair do |k, v|
+    %tr
+      %td= k
+      %td= v
+
+%hr

@@ -14,10 +14,11 @@ class Scraper < ActiveRecord::Base
   def self.execute_jobs
     Scraper.pending_jobs.each do |scraper|
       begin
+        scraper.status = true
         scraper.check
       rescue StandardError => ex
-        self.status = false
-        log ex.message
+        scraper.status = false
+        scraper.log ex.message
       end
       scraper.last_check = Time.zone.now
       scraper.set_next_run_time
@@ -69,6 +70,10 @@ class Scraper < ActiveRecord::Base
       (today <= Time.now) ? Chronic.parse("tomorrow at " + schedule) : today
     end
 
+  end
+
+  def log(message)
+    logs.create(message: message)
   end
 
   private
@@ -140,10 +145,6 @@ class Scraper < ActiveRecord::Base
         builder.use FaradayMiddleware::FollowRedirects
         builder.request :url_encoded
       }
-    end
-
-    def log(message)
-      logs.create(message: message)
     end
 
 

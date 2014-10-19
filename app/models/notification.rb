@@ -5,5 +5,6 @@ class Notification < ActiveRecord::Base
   private
     def notify_user
       puts "notify: #{scraper.user.email}"
+      Notifier.notify(scraper.user, self).deliver
     end
 end
