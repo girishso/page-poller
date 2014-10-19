@@ -1,0 +1,31 @@
+%h1 Listing scrapers
+
+%table
+  %tr
+    %th Name
+    %th Url
+    %th Schedule
+    %th Last check
+    %th Last notification
+    %th Extract
+    %th User
+    %th
+    %th
+    %th
+
+  - @scrapers.each do |scraper|
+    %tr
+      %td= scraper.name
+      %td= scraper.url
+      %td= scraper.schedule
+      %td= scraper.last_check
+      %td= scraper.last_notification
+      %td= scraper.extract
+      %td= scraper.user
+      %td= link_to 'Show', scraper
+      %td= link_to 'Edit', edit_scraper_path(scraper)
+      %td= link_to 'Destroy', scraper, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Scraper', new_scraper_path

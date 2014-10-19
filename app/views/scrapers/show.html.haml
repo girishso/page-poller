@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @scraper.name
+%p
+  %b Url:
+  = @scraper.url
+%p
+  %b Schedule:
+  = @scraper.schedule
+%p
+  %b Last check:
+  = @scraper.last_check
+%p
+  %b Last notification:
+  = @scraper.last_notification
+%p
+  %b Extract:
+  = @scraper.extract
+%p
+  %b User:
+  = @scraper.user
+
+= link_to 'Edit', edit_scraper_path(@scraper)
+\|
+= link_to 'Back', scrapers_path

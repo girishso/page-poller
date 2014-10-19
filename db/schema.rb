@@ -27,4 +27,17 @@ ActiveRecord::Schema.define(version: 20141018151403) do
     t.boolean  "guest"
   end
 
+  create_table "scrapers", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "schedule"
+    t.datetime "last_check"
+    t.datetime "last_notification"
+    t.json     "extract"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scrapers", ["user_id"], name: "index_scrapers_on_user_id", using: :btree
 end
