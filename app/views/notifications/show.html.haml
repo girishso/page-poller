@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Output:
+  = @notification.output
+%p
+  %b Scraper:
+  = @notification.scraper
+%p
+  %b Notification type:
+  = @notification.notification_type
+%p
+  %b Sent:
+  = @notification.sent
+
+= link_to 'Edit', edit_notification_path(@notification)
+\|
+= link_to 'Back', notifications_path

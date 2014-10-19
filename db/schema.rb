@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019023848) do
+ActiveRecord::Schema.define(version: 20141019105618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "logs", force: true do |t|
+    t.string   "message"
+    t.integer  "scraper_id"
+    t.string   "extra"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logs", ["scraper_id"], name: "index_logs_on_scraper_id", using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.string   "output"
+    t.integer  "scraper_id"
+    t.string   "notification_type"
+    t.boolean  "sent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["scraper_id"], name: "index_notifications_on_scraper_id", using: :btree
 
   create_table "scrapers", force: true do |t|
     t.string   "name"
