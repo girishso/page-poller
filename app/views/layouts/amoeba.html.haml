@@ -38,9 +38,6 @@
                 = link_to "Notifications", notifications_path
               %li
                 = link_to "Logs", logs_path
-            %li
-              %a{:href => "#section-about"} About
-            -if current_user.present?
               %li
                 = link_to "Sign out", signout_path
             -else
