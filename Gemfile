@@ -18,6 +18,7 @@ gem 'sendgrid'
 gem 'simple_form'
 gem 'sendgrid-ruby'
 gem 'chronic'
+gem 'twilio-ruby'
 
 group :development do
   gem 'better_errors'
