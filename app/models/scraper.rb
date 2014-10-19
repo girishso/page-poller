@@ -19,7 +19,7 @@ class Scraper < ActiveRecord::Base
         self.status = false
         log ex.message
       end
-      scraper.last_check_time = Time.zone.now
+      scraper.last_check = Time.zone.now
       scraper.set_next_run_time
       scraper.save
     end
