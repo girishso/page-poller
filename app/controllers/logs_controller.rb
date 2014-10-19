@@ -5,7 +5,12 @@ class LogsController < ApplicationController
   # GET /logs
   # GET /logs.json
   def index
-    @logs = Log.all
+    if params[:scraper_id].present?
+      scraper = Scraper.find(params[:scraper_id])
+      @logs = scraper.logs
+    else  
+      @logs = current_user.logs
+    end
   end
 
   # GET /logs/1

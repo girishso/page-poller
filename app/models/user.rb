@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :scrapers
   has_many :notifications, through: :scrapers
+  has_many :logs, through: :scrapers
 
   def self.create_with_omniauth(auth)
     create! do |user|
