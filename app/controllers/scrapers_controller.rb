@@ -41,6 +41,6 @@ class ScrapersController < ApplicationController
     end
 
     def scraper_params
-      params.require(:scraper).permit(:name, :url, :schedule, :last_check, :last_notification, :extract, :user_id)
+      params.require(:scraper).permit(:name, :url, :target_element, :schedule, :last_check, :last_notification, :extract, :user_id)
     end
 end
