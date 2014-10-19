@@ -1,5 +1,5 @@
-.col-md-6.col-md-offset-3
-  -if current_user.nil?
+-if current_user.nil?
+  .col-md-6.col-md-offset-3
     .align-center
 
       %h2.slogan Page Poller
@@ -21,7 +21,6 @@
           %li When new xkcd comic hits the web!
 
         Possibilities are endless!
-  -else
-    = render "scrapers/list" if @scrapers.present?
-    = "You don't have any Scrapers yet! You want to create new? " if @scrapers.empty?
-    = link_to "New Scraper", new_scraper_path
+-else
+  = render "scrapers/list" if @scrapers.present?
+  = link_to "New Scraper", new_scraper_path, class: "btn btn-lg"

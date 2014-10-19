@@ -2,11 +2,11 @@
 
 %hr
 
-%table
-  %tr
-    %th field name
-    %th field value
+= link_to @notification.scraper.url, @notification.scraper.url
 
+%br/
+
+%table
   - @output.each_pair do |k, v|
     %tr
       %td= k
