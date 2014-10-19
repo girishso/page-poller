@@ -1,4 +1,5 @@
 class ScrapersController < ApplicationController
+  respond_to :html
   before_action :set_scraper, only: [:show, :edit, :update, :destroy]
 
   def index

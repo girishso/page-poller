@@ -15,13 +15,6 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-    -# %link{:href => "css/isotope.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}/
-    -# %link{:href => "js/fancybox/jquery.fancybox.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}/
-    -# %link{:href => "css/bootstrap.css", :rel => "stylesheet"}/
-    -# %link{:href => "css/bootstrap-theme.css", :rel => "stylesheet"}/
-    -# %link{:href => "css/style.css", :rel => "stylesheet"}/
-    -# / skin
-    -# %link{:href => "skin/default.css", :rel => "stylesheet"}/
   %body
     %section#header.appear
     .navbar.navbar-fixed-top{"data-0" => "line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);", "data-300" => "line-height:60px; height:60px; background-color:rgba(0,0,0,1);", :role => "navigation"}
@@ -37,39 +30,21 @@
             %li.active
               %a{:href => "index.html"} Home
             %li
+              = link_to "Scrapers", scrapers_path
+            %li
               %a{:href => "#section-about"} About
-            %li
-              %a{:href => "#section-works"} Portfolio
-            %li
-              %a{:href => "#section-contact"} Contact
         / /.navbar-collapse
-    = yield
-    / services
-    %section#section-services.section.pad-bot30.bg-white
-      .container
-        .row.mar-bot40
-          .col-lg-4
-            .align-center
-              %i.fa.fa-code.fa-5x.mar-bot20
-              %h4.text-bold Valid HTML5
-              %p
-                Lorem ipsum dolor sit amet, mutat graeco volumus ad eam, singulis patrioque comprehensam nam no.
-                Mei cu dicat voluptaria volumus.
-          .col-lg-4
-            .align-center
-              %i.fa.fa-terminal.fa-5x.mar-bot20
-              %h4.text-bold Responsive
-              %p
-                Lorem ipsum dolor sit amet, mutat graeco volumus ad eam, singulis patrioque comprehensam nam no.
-                Mei cu dicat voluptaria volumus.
-          .col-lg-4
-            .align-center
-              %i.fa.fa-bolt.fa-5x.mar-bot20
-              %h4.text-bold Customizable
-              %p
-                Lorem ipsum dolor sit amet, mutat graeco volumus ad eam, singulis patrioque comprehensam nam no.
-                Mei cu dicat voluptaria volumus.
-
+    -if controller.controller_name == "visitors"
+      %section.featured
+        .container
+          .row.mar-bot40
+            = yield
+    -else
+      / services
+      %section#section-services.section.pad-bot30.bg-white
+        .container
+          .row.mar-bot40
+            = yield
   
     / contact
     %section#section-contact.section.appear.clearfix
