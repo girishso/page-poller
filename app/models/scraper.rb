@@ -16,9 +16,10 @@ class Scraper < ActiveRecord::Base
       begin
         scraper.check
       rescue StandardError => ex
+        self.status = false
         log ex.message
       end
-
+      scraper.last_check_time = Time.zone.now
       scraper.set_next_run_time
       scraper.save
     end
@@ -37,14 +38,48 @@ class Scraper < ActiveRecord::Base
     notify_if_changed(output)
   end
 
+  def set_next_run_time
+    self.next_run_time = case schedule
+    when /never/
+      puts "never"
+      nil
+    when /every_(\d+)(m|h|d)/
+      puts "matches every #{$1} #{$2}"
+      case $2
+      when 'm'
+        Time.now + $1.to_i.minutes
+      when 'h'
+        Time.now + $1.to_i.hours
+      when 'd'
+        Time.now + $1.to_i.days
+      end
+    when /midnight/
+      puts "00:00"
+      Chronic.parse("today midnight")
+    when /noon/
+      puts "12:00"
+      if Time.now.noon < Time.now # already past noon
+        (Time.now + 1.day).noon
+      else
+        Time.now.noon
+      end
+    when /(am|pm)/
+      puts $1
+      today = Chronic.parse("today at " + schedule)
+      (today <= Time.now) ? Chronic.parse("tomorrow at " + schedule) : today
+    end
+
+  end
+
   private
     def notify_if_changed(output)
       last = notifications.order('id desc').first
-      binding.pry
+      # binding.pry
 
       if last.present?
         return if last.output.downcase.gsub(/\s/, "") == output.to_json.downcase.gsub(/\s/, "")
       end
+      self.last_notification = Time.zone.now
       notifications.create(output: output.to_json)
     end
 
@@ -62,7 +97,7 @@ class Scraper < ActiveRecord::Base
           end
           value.to_s
         }
-        log "Extracting #{name}: #{result}"
+        # log "Extracting #{name}: #{result}"
         
         # case
         # when css = extraction_details['css']
@@ -109,39 +144,6 @@ class Scraper < ActiveRecord::Base
 
     def log(message)
       logs.create(message: message)
-    end
-
-    def set_next_run_time
-      self.next_run_time = case schedule
-      when /never/
-        puts "never"
-        nil
-      when /every_(\d+)(m|h|d)/
-        puts "matches every #{$1} #{$2}"
-        case $2
-        when 'm'
-          Time.now + $1.to_i.minutes
-        when 'h'
-          Time.now + $1.to_i.hours
-        when 'd'
-          Time.now + $1.to_i.days
-        end
-      when /midnight/
-        puts "00:00"
-        Chronic.parse("today midnight")
-      when /noon/
-        puts "12:00"
-        if Time.now.noon < Time.now # already past noon
-          (Time.now + 1.day).noon
-        else
-          Time.now.noon
-        end
-      when /(am|pm)/
-        puts $1
-        today = Chronic.parse("today at " + schedule)
-        (today <= Time.now) ? Chronic.parse("tomorrow at " + schedule) : today
-      end
-
     end
 
 

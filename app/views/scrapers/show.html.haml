@@ -27,7 +27,12 @@
 %p
   %b User:
   = @scraper.user.name
+%p
+  %b Last status
+  = raw success_fail(@scraper.status)
 
 = link_to 'Edit', edit_scraper_path(@scraper)
 \|
 = link_to 'Back', scrapers_path
+\|
+= link_to 'Destroy', @scraper, :method => :delete, :data => { :confirm => 'Are you sure?' }

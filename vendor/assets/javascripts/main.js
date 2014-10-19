@@ -74,19 +74,19 @@
 			jQuery("body").toggleClass("body");
 
 	} else {
-		var s = skrollr.init({
-			mobileDeceleration: 1,
-			edgeStrategy: 'set',
-			forceHeight: true,
-			smoothScrolling: true,
-			smoothScrollingDuration: 300,
-				easing: {
-					WTF: Math.random,
-					inverted: function(p) {
-						return 1-p;
-					}
-				}
-			});
+		// var s = skrollr.init({
+		// 	mobileDeceleration: 1,
+		// 	edgeStrategy: 'set',
+		// 	forceHeight: true,
+		// 	smoothScrolling: true,
+		// 	smoothScrollingDuration: 300,
+		// 		easing: {
+		// 			WTF: Math.random,
+		// 			inverted: function(p) {
+		// 				return 1-p;
+		// 			}
+		// 		}
+		// 	});
 	}
 
 

@@ -17,7 +17,7 @@
   -if @scrapers.present?
     - @scrapers.each do |scraper|
       %tr
-        %td= scraper.name
+        %td= link_to scraper.name, scraper
         %td= scraper.url
         %td= scraper.schedule.humanize.titleize
         %td= scraper.last_check
@@ -26,6 +26,3 @@
         %td= scraper.user.name
         %td= link_to 'Logs', logs_path
         %td= link_to 'Notifications', notifications_path
-        %td= link_to 'Show', scraper
-        %td= link_to 'Edit', edit_scraper_path(scraper)
-        %td= link_to 'Destroy', scraper, :method => :delete, :data => { :confirm => 'Are you sure?' }

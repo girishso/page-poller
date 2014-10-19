@@ -84,7 +84,7 @@ margin-right: 30px;
 section.featured #btns a {
 margin: 0 auto 30px;
 }
-a, .btn-nesto-home, .btn.btn-nesto-home, .panel-title a, .panel-title a.collapsed:hover, .feature-box-style1:hover .feature-box-title, .feature-box-style2:hover .feature-box-title, .member-title, #newsletter-form button, #owl-clients-wrapper .client-name, .contactform #form-message {
+.btn-nesto-home, .btn.btn-nesto-home, .panel-title a, .panel-title a.collapsed:hover, .feature-box-style1:hover .feature-box-title, .feature-box-style2:hover .feature-box-title, .member-title, #newsletter-form button, #owl-clients-wrapper .client-name, .contactform #form-message {
 color: #2F5F7A;
 }
 
@@ -138,4 +138,12 @@ box-shadow: 0 2px 0 rgba(0,0,0,0.3);
 
 .navbar .nav {
 	margin-top: 5px;
+}
+
+section#footer .copyright {
+color: #B4B4B4;
+}
+
+section#footer .copyright a {
+color: #7ad0ff;
 }
