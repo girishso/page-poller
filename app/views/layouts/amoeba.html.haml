@@ -26,9 +26,10 @@
             %a.navbar-brand{"data-0" => "line-height:90px;", "data-300" => "line-height:50px;", :href => "/"}
               %i.fa.fa-code
               Page Poller
+
         .navbar-collapse.collapse
           %ul.nav.navbar-nav{"data-0" => "margin-top:20px;", "data-300" => "margin-top:5px;"}
-            %li.active
+            %li
               %a{:href => "/"} Home
             -if current_user.present?
               %li
@@ -41,7 +42,13 @@
               %a{:href => "#section-about"} About
             -if current_user.present?
               %li
-                = link_to "Sign out", signout_path 
+                = link_to "Sign out", signout_path
+            -else
+              %li
+                = link_to "Sign In With Github", signin_path
+        %nav.navbar-nav.navbar-right
+          %lead.bg-primary.text-info{:type => "button"}
+            = current_user.name if current_user.present?
         / /.navbar-collapse
     =render 'layouts/messages'
     -if controller.controller_name == "visitors"
