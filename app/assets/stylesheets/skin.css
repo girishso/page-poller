@@ -77,14 +77,14 @@ a.scrollup{
 	background:#59B2E5;
 }
 
-section.featured #btns button:first-child {
+section.featured #btns a:first-child {
 margin-right: 30px;
 }
 
-section.featured #btns button {
+section.featured #btns a {
 margin: 0 auto 30px;
 }
-button, .btn-nesto-home, .btn.btn-nesto-home, .panel-title a, .panel-title a.collapsed:hover, .feature-box-style1:hover .feature-box-title, .feature-box-style2:hover .feature-box-title, .member-title, #newsletter-form button, #owl-clients-wrapper .client-name, .contactform #form-message {
+a, .btn-nesto-home, .btn.btn-nesto-home, .panel-title a, .panel-title a.collapsed:hover, .feature-box-style1:hover .feature-box-title, .feature-box-style2:hover .feature-box-title, .member-title, #newsletter-form button, #owl-clients-wrapper .client-name, .contactform #form-message {
 color: #2F5F7A;
 }
 
