@@ -76,6 +76,19 @@
     %a.scrollup{:href => "#header"}
       %i.fa.fa-chevron-up
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %script{:charset => "utf-8", :type => "text/javascript"}
+      var _swell_site_ids = _swell_site_ids || [];
+      _swell_site_ids.push('ca23b576');
+      (function() {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//df50assd5876f.cloudfront.net/assets/hello-3b9181727ebdc6002c5bb5da48a2257f.js';
+      ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+      })();
+    %noscript
+      %img{:src => "//heyswell.com/v1/hello.gif?sites=ca23b576&javascript=0"}/
+
     -# %script{:src => "js/modernizr-2.6.2-respond-1.1.0.min.js"}
     -# %script{:src => "js/jquery.js"}
     -# %script{:src => "js/jquery.easing.1.3.js"}
