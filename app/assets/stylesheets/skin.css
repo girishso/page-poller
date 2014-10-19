@@ -159,3 +159,21 @@ color: #7ad0ff;
 	margin: 0;
 padding: 80px 0 0px 0;
 }
+
+input[type=text],  input[type=email], textarea, input[type=url], #scraper_schedule {
+	width: 30%;
+	background: rgba(227, 231, 228, 1);
+	font-family: 'Open Sans', sans serif;
+	border: 0;
+	font-size:14px;
+	text-align: left;
+	vertical-align: middle;
+	padding: 2px 10px;
+}
+#scraper_schedule {
+height: 30px;
+}
+input[type=submit]{
+	padding:10px 10px;
+	margin-top: 20px;
+}

@@ -2,12 +2,11 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :url
-    = f.input :target_element
-    = f.input :schedule, collection: Scraper::SCHEDULES.map {|s| [s.humanize.titleize, s] }
-    = f.input :extract, as: :text
-    =# f.association :user
+    = f.input :name, placeholder: 'Name of your scraper.', hint: 'e.g. Hacker News top story'
+    = f.input :url, placeholder: 'URL of the page, you want to scrape.', hint: 'e.g. https://news.ycombinator.com/'
+    = f.input :target_element, placeholder: 'CSS selector for the target element in page.', hint: 'e.g. tr:nth-child(1) .title a'
+    = f.input :schedule, collection: Scraper::SCHEDULES.map {|s| [s.humanize.titleize, s] }, hint: 'How often you want to scrape the page?'
+    = f.input :extract, as: :text, placeholder: 'Comma separated XPath expressions, you want to extract.', hint: "e.g. @href, text()"
 
   .form-actions
     = f.button :submit
