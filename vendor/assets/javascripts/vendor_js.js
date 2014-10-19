@@ -17,7 +17,6 @@
 //= require jquery.isotope.min
 //= require jquery.nicescroll.min
 //= require fancybox/jquery.fancybox.pack
-//= require skrollr.min	
 //= require jquery.scrollTo-1.4.3.1-min
 //= require jquery.localscroll-1.2.7-min
 //= require stellar

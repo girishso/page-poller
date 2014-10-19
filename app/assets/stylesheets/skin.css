@@ -127,3 +127,15 @@ box-shadow: 0 2px 0 rgba(0,0,0,0.3);
 #btns {
 	padding-top: 20px;
 }
+
+.navbar {
+	line-height: 60px; height: 60px; background-color: rgb(0, 0, 0);
+}
+
+.navbar h1 a {
+	line-height: 50px;
+}
+
+.navbar .nav {
+	margin-top: 5px;
+}
