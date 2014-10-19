@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :scrapers
   has_many :notifications, through: :scrapers
   has_many :logs, through: :scrapers
+  
+  after_create :create_default_scrapers
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -23,6 +25,25 @@ class User < ActiveRecord::Base
     usr.save!(validate: false)
     # session[:guest_user_id] = usr.id
     usr
+  end
+  
+  def create_default_scrapers
+    puts "in create_default_scrapers"
+    scrapers.create!({
+      name: "HN Top Story",
+      url: "https://news.ycombinator.com/",
+      target_element: "tr:nth-child(1) .title a",
+      schedule: "every_15m",
+      extract: "@href,text()"
+      })
+      
+    scrapers.create!({
+      name: "New xkcd comics",
+      url: "http://xkcd.com/",
+      target_element: "#comic img",
+      schedule: "every_1d",
+      extract: "@src,@title,@alt"
+      })
   end
 
 end

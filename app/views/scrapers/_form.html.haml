@@ -5,6 +5,11 @@
     = f.input :name, placeholder: 'Name of your scraper.', hint: 'e.g. Hacker News top story'
     = f.input :url, placeholder: 'URL of the page, you want to scrape.', hint: 'e.g. https://news.ycombinator.com/'
     = f.input :target_element, placeholder: 'CSS selector for the target element in page.', hint: 'e.g. tr:nth-child(1) .title a'
+    .alert.alert-info(style="width:30%;")
+      You can use
+      = link_to "Selector Gadget", "http://selectorgadget.com/"
+      to find the CSS selectors
+
     = f.input :schedule, collection: Scraper::SCHEDULES.map {|s| [s.humanize.titleize, s] }, hint: 'How often you want to scrape the page?'
     = f.input :extract, as: :text, placeholder: 'Comma separated XPath expressions, you want to extract.', hint: "e.g. @href, text()"
 

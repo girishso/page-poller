@@ -163,7 +163,7 @@ padding: 80px 0 0px 0;
 input[type=text],  input[type=email], textarea, input[type=url], #scraper_schedule {
 	width: 30%;
 	background: rgba(227, 231, 228, 1);
-	font-family: 'Open Sans', sans serif;
+	/* font-family: 'Open Sans', sans serif; */
 	border: 0;
 	font-size:14px;
 	text-align: left;
@@ -179,4 +179,7 @@ input[type=submit]{
 }
 .bg-white {
 	min-height: 600px;
+}
+.help-inline {
+	color: #a00;
 }

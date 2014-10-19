@@ -10,6 +10,12 @@ class Scraper < ActiveRecord::Base
 
   before_save :set_next_run_time
   scope :pending_jobs, -> { where("next_run_time < ?", Time.zone.now) }
+  
+  validates :url, format: URI::regexp(%w(http https)), presence: true
+  validates :name, presence: true
+  validates :schedule, presence: true
+  validates :extract, presence: true
+  validates :target_element, presence: true
 
   def self.execute_jobs
     Scraper.pending_jobs.each do |scraper|
@@ -91,7 +97,7 @@ class Scraper < ActiveRecord::Base
     def extract_xml(doc)
       extract_each(doc) { |name|
         nodes = doc.css(target_element)
-        binding.pry
+        # binding.pry
         result = nodes.map { |node|
           xpath = name == "text" ? "text()" : name
           case value = node.xpath(xpath)

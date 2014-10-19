@@ -1,27 +1,27 @@
 %h1 Scrapers
 
 -if @scrapers.empty?
-  %h1 You don't have any Scrapers yet! You want to create new?
-
-%table.table.table-striped
-  %tr
-    %th Name
-    %th Url
-    %th Schedule
-    %th Last check
-    %th Last notification
-    %th Logs
-    %th Notifications
-    %th
-    %th
-    %th
-  -if @scrapers.present?
-    - @scrapers.each do |scraper|
-      %tr
-        %td= link_to scraper.name, scraper
-        %td= scraper.url
-        %td= scraper.schedule.humanize.titleize
-        %td= scraper.last_check.present? ? distance_of_time_in_words_to_now(scraper.last_check) + " ago" : "Never"
-        %td= scraper.last_notification.present? ? distance_of_time_in_words_to_now(scraper.last_notification) + " ago" : "Never"
-        %td= link_to 'Logs', logs_path( :params => {:scraper_id => scraper.id})
-        %td= link_to 'Notifications', notifications_path( :params => {:scraper_id => scraper.id})
+  %h2 No Scrapers yet! You want to create new?
+-else
+  %table.table.table-striped
+    %tr
+      %th Name
+      %th Url
+      %th Schedule
+      %th Last check
+      %th Last notification
+      %th Logs
+      %th Notifications
+      %th
+      %th
+      %th
+    -if @scrapers.present?
+      - @scrapers.each do |scraper|
+        %tr
+          %td= link_to scraper.name, scraper
+          %td= scraper.url
+          %td= scraper.schedule.humanize.titleize
+          %td= scraper.last_check.present? ? distance_of_time_in_words_to_now(scraper.last_check) + " ago" : "Never"
+          %td= scraper.last_notification.present? ? distance_of_time_in_words_to_now(scraper.last_notification) + " ago" : "Never"
+          %td= link_to 'Logs', logs_path( :params => {:scraper_id => scraper.id})
+          %td= link_to 'Notifications', notifications_path( :params => {:scraper_id => scraper.id})
