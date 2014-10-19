@@ -29,8 +29,9 @@
           %ul.nav.navbar-nav{"data-0" => "margin-top:20px;", "data-300" => "margin-top:5px;"}
             %li.active
               %a{:href => "/"} Home
-            %li
-              = link_to "Scrapers", scrapers_path
+            -if current_user.present?
+              %li
+                = link_to "Scrapers", scrapers_path
             %li
               %a{:href => "#section-about"} About
             -if current_user.present?
@@ -38,10 +39,16 @@
                 = link_to "Sign out", signout_path 
         / /.navbar-collapse
     -if controller.controller_name == "visitors"
-      %section.featured
-        .container
-          .row.mar-bot40
-            = yield
+      - if current_user.nil?
+        %section.featured
+          .container
+            .row.mar-bot40
+              = yield
+      -else
+        %section#section-services.section.pad-bot30.bg-white
+          .container
+            .row.mar-bot40
+              = yield
     -else
       / services
       %section#section-services.section.pad-bot30.bg-white
