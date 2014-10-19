@@ -76,6 +76,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
     ffi (1.9.6)
     foreman (0.75.0)
       dotenv (~> 0.11.1)
@@ -307,6 +309,8 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  faraday (~> 0.9.0)
+  faraday_middleware
   foreman
   guard-bundler
   guard-rails

@@ -19,6 +19,8 @@ gem 'simple_form'
 gem 'sendgrid-ruby'
 gem 'chronic'
 gem 'twilio-ruby'
+gem 'faraday', '~> 0.9.0'
+gem 'faraday_middleware'
 
 group :development do
   gem 'better_errors'
