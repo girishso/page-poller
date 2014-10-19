@@ -1,6 +1,6 @@
 %h1 Listing scrapers
 
-%table
+%table.table.table-striped
   %tr
     %th Name
     %th Url
@@ -17,7 +17,7 @@
     %tr
       %td= scraper.name
       %td= scraper.url
-      %td= scraper.schedule
+      %td= scraper.schedule.humanize.titleize
       %td= scraper.last_check
       %td= scraper.last_notification
       %td= scraper.extract

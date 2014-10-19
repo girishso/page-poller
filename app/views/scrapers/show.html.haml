@@ -11,7 +11,7 @@
   = @scraper.target_element
 %p
   %b Schedule:
-  = @scraper.schedule
+  = @scraper.schedule.humanize.titleize
 %p
   %b Last check:
   = @scraper.last_check

@@ -5,7 +5,7 @@
     = f.input :name
     = f.input :url
     = f.input :target_element
-    = f.input :schedule
+    = f.input :schedule, collection: Scraper::SCHEDULES.map {|s| [s.humanize.titleize, s] }
     = f.input :extract, as: :text
     =# f.association :user
 
