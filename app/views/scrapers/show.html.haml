@@ -1,68 +1,60 @@
+%h2 Scraper: #{@scraper.name}
+
 %table.table.table-striped
   %tr
-    %th{:width => "20%"} 
-      %b 
-        ATTRIBUTES 
-    %th
+    %td(width="15%")
       %b
-        VALUES
-  %tr
-    %td 
-      %b 
         Name
     %td= @scraper.name
-  %tr
-    %td 
+    %td
       %b
         Url
     %td= @scraper.url
+
   %tr
-    %td 
+    %td(width="15%")
       %b
         Target Element
     %td= @scraper.target_element
-  %tr
-    %td 
+    %td
       %b
         Schedule
     %td= @scraper.schedule.humanize.titleize
+
   %tr
-    %td 
+    %td
       %b
         Last check
-    %td= @scraper.last_check.present? ? distance_of_time_in_words_to_now(@scraper.last_check) + " ago" : "Never"
-  %tr
-    %td 
+    %td= humanize_time(@scraper.last_check)
+    %td
       %b
         Next run time
-    %td= next_run_time(@scraper.next_run_time)
+    %td= humanize_time(@scraper.next_run_time)
+
   %tr
-    %td 
+    %td
       %b
         Last notification
-    %td= @scraper.last_notification.present? ? distance_of_time_in_words_to_now(@scraper.last_notification) + " ago" : "Never"
-  %tr
-    %td 
+    %td= humanize_time(@scraper.last_notification)
+    %td
       %b
         Extract
     %td= @scraper.extract
+
   %tr
-    %td 
-      %b
-        User
-    %td= @scraper.user.name
-  %tr
-    %td 
+    %td
       %b
         Last status
     %td= raw success_fail(@scraper.status)
+    %td
+    %td
+
   %tr
-    %td 
+    %td
       %b
         Notifications
     %td=link_to 'Notifications', notifications_path( :params => {:scraper_id => @scraper.id})
-  %tr
-    %td 
+    %td
       %b
         Logs
     %td=link_to 'Logs', logs_path( :params => {:scraper_id => @scraper.id})

@@ -46,6 +46,13 @@ class Scraper < ActiveRecord::Base
   end
 
   def set_next_run_time
+    if new_record?
+      self.next_run_time = Time.zone.now
+    end
+
+    # set only if schedule is changed
+    return if schedule == schedule_was
+
     self.next_run_time = case schedule
     when /never/
       puts "never"

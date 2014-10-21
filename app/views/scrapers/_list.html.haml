@@ -8,11 +8,12 @@
       %th Name
       %th Url
       %th Schedule
+      %th Next Check
       %th Last check
       %th Last notification
+      %th Last Status
       %th Logs
       %th Notifications
-      %th
       %th
       %th
     -if @scrapers.present?
@@ -21,7 +22,9 @@
           %td= link_to scraper.name, scraper
           %td= scraper.url
           %td= scraper.schedule.humanize.titleize
-          %td= scraper.last_check.present? ? distance_of_time_in_words_to_now(scraper.last_check) + " ago" : "Never"
-          %td= scraper.last_notification.present? ? distance_of_time_in_words_to_now(scraper.last_notification) + " ago" : "Never"
+          %td= humanize_time scraper.next_run_time
+          %td= humanize_time scraper.last_check
+          %td= humanize_time scraper.last_notification
+          %td= raw success_fail(scraper.status)
           %td= link_to 'Logs', logs_path( :params => {:scraper_id => scraper.id})
           %td= link_to 'Notifications', notifications_path( :params => {:scraper_id => scraper.id})
