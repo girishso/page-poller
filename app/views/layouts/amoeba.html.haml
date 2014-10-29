@@ -39,16 +39,20 @@
               %li
                 = link_to "Logs", logs_path
               %li
-                = link_to "Sign out", signout_path
+                
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  = current_user.name
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
+                  %li
+                    = link_to "Profile", current_user
+                  %li
+                    = link_to "Sign out", signout_path
             -else
               %li
                 = link_to "Log In With Github", signin_path
-        - if current_user.present?
-          %nav.navbar-nav.navbar-right
-            %lead.bg-primary.text-info{:type => "button"} 
-              Welcome 
-              = current_user.name 
-        / /.navbar-collapse
+
     =render 'layouts/messages'
     -if controller.controller_name == "visitors"
       - if current_user.nil?
