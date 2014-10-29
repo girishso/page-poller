@@ -3,7 +3,7 @@
 #2 = 7ad0ff
 */
 a {
-	color: #59B2E5;
+	color: #35A49C;
 }
 a:hover {
 	color: #7ad0ff;
@@ -182,4 +182,12 @@ input[type=submit]{
 }
 .help-inline {
 	color: #a00;
+}
+
+.navbar .container {
+	overflow: visible;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+background-color: inherit;
+border-color: #428bca;
 }
