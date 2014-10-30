@@ -33,10 +33,10 @@ class User < ActiveRecord::Base
       name: "HN Top Story",
       url: "https://news.ycombinator.com/",
       target_element: "tr:nth-child(1) .title a",
-      schedule: "every_15m",
+      schedule: "every_1d",
       extract: "@href,text()"
       })
-      
+
     scrapers.create!({
       name: "New xkcd comics",
       url: "http://xkcd.com/",

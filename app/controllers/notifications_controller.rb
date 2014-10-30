@@ -7,9 +7,9 @@ class NotificationsController < ApplicationController
   def index
     if params[:scraper_id].present?
       scraper = Scraper.find(params[:scraper_id])
-      @notifications = scraper.notifications.order(created_at: :desc)
+      @notifications = scraper.notifications.order(created_at: :desc).page params[:page]
     else  
-      @notifications = current_user.notifications.order(created_at: :desc)
+      @notifications = current_user.notifications.order(created_at: :desc).page params[:page]
     end
   end
 

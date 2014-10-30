@@ -7,10 +7,10 @@ class LogsController < ApplicationController
   def index
     if params[:scraper_id].present?
       scraper = Scraper.find(params[:scraper_id])
-      @logs = scraper.logs.order(created_at: :desc)
+      @logs = scraper.logs.order(created_at: :desc).page params[:page]
       # @logs.
     else  
-      @logs = current_user.logs.order(created_at: :desc)
+      @logs = current_user.logs.order(created_at: :desc).page params[:page]
       # @logs
     end
   end

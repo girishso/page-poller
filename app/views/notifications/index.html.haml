@@ -13,3 +13,4 @@
       %td= notification.output
       %td= distance_of_time_in_words_to_now(notification.created_at) + " ago"
 %br
+= paginate @notifications
