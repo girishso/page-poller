@@ -22,7 +22,7 @@ gem 'twilio-ruby'
 gem 'faraday', '~> 0.9.0'
 gem 'faraday_middleware'
 gem 'nokogiri'
-
+gem 'upmin-admin'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

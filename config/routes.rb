@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :scrapers
 
+  mount Upmin::Engine => '/karyakarta'
+
   resources :users
   root to: 'visitors#index'
   get '/auth/:provider/callback' => 'sessions#create'
