@@ -12,7 +12,7 @@
       %td= k
       %td
         -if k == '@src' or v.first =~ /\.(jpg|png|gif|jpeg)$/
-          %img(src="#{v.first}")
+          %img(src="#{CGI::escape(v.first)}")
           %hr
         = v
 
