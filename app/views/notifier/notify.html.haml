@@ -11,7 +11,7 @@
     %tr
       %td= k
       %td
-        -if k == '@src'
+        -if k == '@src' or v.first =~ /\.(jpg|png|gif|jpeg)$/
           %img(src="#{v.first}")
           %hr
         = v
