@@ -119,7 +119,7 @@ class Scraper < ActiveRecord::Base
           value = if value =~ /^\/\//
             value.gsub(/^\/\//, "#{protocol}://")
           else
-            value.gsub(/\W{2,}/m, "<br/>")
+            value.gsub(/(\W){2,}/m, '\1')
           end
           value
         }
