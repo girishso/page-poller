@@ -52,7 +52,7 @@ class Scraper < ActiveRecord::Base
     end
 
     # set only if schedule is changed
-    return if schedule == schedule_was
+    # return if schedule == schedule_was
 
     self.next_run_time = case schedule
     when /never/
