@@ -114,7 +114,8 @@ class Scraper < ActiveRecord::Base
             # convert it to integer as appropriate.
             value = value.to_i if value.to_i == value
           end
-          value.to_s
+          protocol = url.match(/^(https?)/).to_s
+          value.to_s.gsub(/^\/\//, "#{protocol}//")
         }
         # log "Extracting #{name}: #{result}"
         

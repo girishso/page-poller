@@ -5,9 +5,9 @@ task :execute_jobs => :environment do
   puts "done."
 end
 
-task :send_reminders => :environment do
-  User.send_reminders
-end
+# task :send_reminders => :environment do
+#   User.send_reminders
+# end
 
 task :delete_old_recs => :environment do
   Log.where("created_at < ?", [1.week.ago]).destroy_all
