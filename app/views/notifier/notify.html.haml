@@ -12,7 +12,7 @@
       %td= k
       %td
         -if k == '@src' or v.first =~ /\.(jpg|png|gif|jpeg)$/
-          %img(src = "#{URI.parse(v.first).to_s}")
+          %img(src = "#{URI::escape(v.first)}")
           %hr
         = v.join("<br/>")
 
