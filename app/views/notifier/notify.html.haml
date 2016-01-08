@@ -14,6 +14,6 @@
         -if k == '@src' or v.first =~ /\.(jpg|png|gif|jpeg)$/
           %img(src="#{CGI::escape(v.first)}")
           %hr
-        = v
+        = v.join("<br/>")
 
 %hr
