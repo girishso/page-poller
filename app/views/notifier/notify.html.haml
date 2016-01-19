@@ -9,11 +9,11 @@
 %table
   - @output.each_pair do |k, v|
     %tr
-      %td= k
+      %td= k.reverse[0..30].reverse
       %td
         -if k == '@src' or v.first =~ /\.(jpg|png|gif|jpeg)$/
           %img(src = "#{URI::escape(v.first)}")
           %hr
-        %pre= v.join("\n\n")
+        = v.join("<br/>")
 
 %hr
