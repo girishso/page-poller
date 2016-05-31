@@ -7,6 +7,6 @@ class Notifier < ActionMailer::Base
     @notification = notification
     @output = JSON::parse(notification.output)
 
-    mail(to: @user.email, subject: "Notification: " + notification.scraper.name)
+    mail(to: @user.email, subject: notification.scraper.name)
   end
 end
