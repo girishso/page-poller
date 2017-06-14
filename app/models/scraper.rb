@@ -10,7 +10,7 @@ class Scraper < ActiveRecord::Base
 
   before_save :set_next_run_time
   scope :pending_jobs, -> { where("next_run_time < ?", Time.zone.now) }
-  
+
   validates :url, format: URI::regexp(%w(http https)), presence: true
   validates :name, presence: true
   validates :schedule, presence: true
@@ -121,10 +121,10 @@ class Scraper < ActiveRecord::Base
           else
             value.gsub(/(\W){2,}/m, '\1')
           end
-          value
+          value.gsub(/(https?)\//, '\1:')
         }
         # log "Extracting #{name}: #{result}"
-        
+
         # case
         # when css = extraction_details['css']
         #   nodes = doc.css(css)
