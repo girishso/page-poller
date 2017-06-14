@@ -9,9 +9,10 @@
 %table
   - @output.each_pair do |k, v|
     %tr
-      %td(width="10%")= k.reverse[0..20].reverse
-      %td(width="90%")
+      %td(width="100%")
         .row
+          %strong= k.reverse[0..20].reverse
+          %br/
           -if k == '@src' or v.first =~ /\.(jpg|png|gif|jpeg)$/
             %img(src = "#{URI::escape(v.first)}")
             %hr
