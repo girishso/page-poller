@@ -121,7 +121,7 @@ class Scraper < ActiveRecord::Base
           else
             value.gsub(/(\W){2,}/m, '\1')
           end
-          value.gsub(/(https?)\//, '\1:')
+          value.gsub(/(https?)\//, '\1://')
         }
         # log "Extracting #{name}: #{result}"
 
