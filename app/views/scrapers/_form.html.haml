@@ -12,6 +12,7 @@
 
     = f.input :schedule, collection: Scraper::SCHEDULES.map {|s| [s.humanize.titleize, s] }, hint: 'How often you want to scrape the page?'
     = f.input :extract, as: :text, placeholder: 'Comma separated XPath expressions, you want to extract.', hint: "e.g. @href, text()"
+    = f.input :subject, placeholder: 'XPath expression to use as email subject', hint: 'e.g. //*[@class="dotd-title"]'
 
   .form-actions
     = f.button :submit

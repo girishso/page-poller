@@ -55,35 +55,34 @@ class Scraper < ActiveRecord::Base
     # return if schedule == schedule_was
 
     self.next_run_time = case schedule
-    when /never/
-      puts "never"
-      nil
-    when /every_(\d+)(m|h|d)/
-      puts "matches every #{$1} #{$2}"
-      case $2
-      when 'm'
-        Time.now + $1.to_i.minutes
-      when 'h'
-        Time.now + $1.to_i.hours
-      when 'd'
-        Time.now + $1.to_i.days
-      end
-    when /midnight/
-      puts "00:00"
-      Chronic.parse("today midnight")
-    when /noon/
-      puts "12:00"
-      if Time.now.noon < Time.now # already past noon
-        (Time.now + 1.day).noon
-      else
-        Time.now.noon
-      end
-    when /(am|pm)/
-      puts $1
-      today = Chronic.parse("today at " + schedule)
-      (today <= Time.now) ? Chronic.parse("tomorrow at " + schedule) : today
-    end
-
+                         when /never/
+                           puts "never"
+                           nil
+                         when /every_(\d+)(m|h|d)/
+                           puts "matches every #{$1} #{$2}"
+                           case $2
+                           when 'm'
+                             Time.now + $1.to_i.minutes
+                           when 'h'
+                             Time.now + $1.to_i.hours
+                           when 'd'
+                             Time.now + $1.to_i.days
+                           end
+                         when /midnight/
+                           puts "00:00"
+                           Chronic.parse("today midnight")
+                         when /noon/
+                           puts "12:00"
+                           if Time.now.noon < Time.now # already past noon
+                             (Time.now + 1.day).noon
+                           else
+                             Time.now.noon
+                           end
+                         when /(am|pm)/
+                           puts $1
+                           today = Chronic.parse("today at " + schedule)
+                           (today <= Time.now) ? Chronic.parse("tomorrow at " + schedule) : today
+                         end
   end
 
   def log(message)
@@ -91,6 +90,7 @@ class Scraper < ActiveRecord::Base
   end
 
   private
+
     def notify_if_changed(output)
       last = notifications.order('id desc').first
       # binding.pry
@@ -117,10 +117,10 @@ class Scraper < ActiveRecord::Base
           protocol = url.match(/^(https?)/).to_s
           value = value.text()
           value = if value =~ /^\/\//
-            value.gsub(/^\/\//, "#{protocol}://")
-          else
-            value.gsub(/(\W){2,}/m, '\1')
-          end
+                    value.gsub(/^\/\//, "#{protocol}://")
+                  else
+                    value.gsub(/(\W){2,}/m, '\1')
+                  end
           value.gsub(/(https?)\//, '\1://')
         }
         # log "Extracting #{name}: #{result}"
@@ -155,7 +155,7 @@ class Scraper < ActiveRecord::Base
 
     def extract_each(doc, &block)
       extract.split(",").each_with_object({}) { |(name), output|
-        output[name] = block.call(name)
+        output[name.strip] = block.call(name)
       }
     end
 
@@ -167,6 +167,5 @@ class Scraper < ActiveRecord::Base
         builder.request :url_encoded
       }
     end
-
 
 end

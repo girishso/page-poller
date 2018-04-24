@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141059154325) do
+ActiveRecord::Schema.define(version: 20180424000759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "logs", force: true do |t|
+  create_table "logs", force: :cascade do |t|
     t.text     "message"
     t.integer  "scraper_id"
-    t.string   "extra"
+    t.string   "extra",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "logs", ["scraper_id"], name: "index_logs_on_scraper_id", using: :btree
 
-  create_table "notifications", force: true do |t|
+  create_table "notifications", force: :cascade do |t|
     t.text     "output"
     t.integer  "scraper_id"
-    t.string   "notification_type"
+    t.string   "notification_type", limit: 255
     t.boolean  "sent"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 20141059154325) do
 
   add_index "notifications", ["scraper_id"], name: "index_notifications_on_scraper_id", using: :btree
 
-  create_table "scrapers", force: true do |t|
-    t.string   "name"
-    t.string   "url"
-    t.string   "target_element"
-    t.string   "schedule"
+  create_table "scrapers", force: :cascade do |t|
+    t.string   "name",                   limit: 255
+    t.string   "url",                    limit: 255
+    t.string   "target_element",         limit: 255
+    t.string   "schedule",               limit: 255
     t.datetime "last_check"
     t.datetime "last_notification"
     t.text     "extract"
@@ -50,18 +50,19 @@ ActiveRecord::Schema.define(version: 20141059154325) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "next_run_time"
-    t.boolean  "status",                 default: true
-    t.boolean  "send_sms",               default: false
+    t.boolean  "status",                             default: true
+    t.boolean  "send_sms",                           default: false
+    t.string   "subject"
   end
 
   add_index "scrapers", ["user_id"], name: "index_scrapers_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "email"
-    t.string   "phone"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.string   "email",      limit: 255
+    t.string   "phone",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "guest"
