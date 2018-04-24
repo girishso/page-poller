@@ -8,7 +8,6 @@ class Notifier < ActionMailer::Base
     @output = JSON::parse(notification.output)
     scraper = notification.scraper
 
-    byebug
     subject = scraper.subject.present? ? "#{@output[scraper.subject]&.map(&:strip)&.join('-')} - #{scraper.name}" : scraper.name
 
     mail(to: @user.email, subject: subject)
