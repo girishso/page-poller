@@ -38,11 +38,12 @@ class ScrapersController < ApplicationController
   end
 
   private
+
     def set_scraper
       @scraper = Scraper.find(params[:id])
     end
 
     def scraper_params
-      params.require(:scraper).permit(:name, :url, :target_element, :schedule, :extract, :user_id)
+      params.require(:scraper).permit(:name, :url, :target_element, :schedule, :extract, :user_id, :subject)
     end
 end
